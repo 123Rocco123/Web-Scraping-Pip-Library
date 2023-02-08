@@ -62,7 +62,7 @@ def stockInformation(url, url1, url2):
         # It's important to remember that the stockChange and floatStockChange are all based on 1 minute transactions.
         # This is to better predict end of the day stock values
             # So as to make sure that the values aren't locked in on the moment, but rather a general trend over the day
-    return [openPrice, high, low, stockPrice, float(stockChange) / 390, float(floatStockChange) / 390, investorConfidence, volume, int(volume / 390), datetime.now().month, datetime.now().day, datetime.now().year, "{month}/{day}/{year}".format(day = datetime.now().day, month = datetime.now().month, year = datetime.now().year), 0, eps, float(stockPrice) / float(eps)]
+    return {"Open" : openPrice, "High" : high, "Low" : low, "Stock Price (Close)" : stockPrice, "Stock Change" : stockChange, "Float Stock Change" : floatStockChange, "1 Year Val (Expected)" : investorConfidence, "Volume" : volume, "Month" : datetime.now().month, "Day" : datetime.now().day, "Year" : datetime.now().year, "EPS" : eps}
 
 # Function used to gather historic details of a company
 def stockInformationHistoric(url):
