@@ -1,3 +1,9 @@
+import requests
+
+from requests_html import HTMLSession
+from bs4 import BeautifulSoup
+from datetime import datetime
+
 # Function used to gather main information
 def stockInformation(url, url1, url2):
     # Requests is used to get the HTML page that we need to parse over
