@@ -1,0 +1,11 @@
+CHANGELOG.txt
+LICENCE.txt
+MANIFEST.in
+README.txt
+setup.py
+ptrFinance/__init__.py
+ptrFinance.egg-info/PKG-INFO
+ptrFinance.egg-info/SOURCES.txt
+ptrFinance.egg-info/dependency_links.txt
+ptrFinance.egg-info/requires.txt
+ptrFinance.egg-info/top_level.txt
