@@ -63,3 +63,36 @@ def stockInformation(url, url1, url2):
         # This is to better predict end of the day stock values
             # So as to make sure that the values aren't locked in on the moment, but rather a general trend over the day
     return [openPrice, high, low, stockPrice, float(stockChange) / 390, float(floatStockChange) / 390, investorConfidence, volume, int(volume / 390), datetime.now().month, datetime.now().day, datetime.now().year, "{month}/{day}/{year}".format(day = datetime.now().day, month = datetime.now().month, year = datetime.now().year), 0, eps, float(stockPrice) / float(eps)]
+
+# Function used to gather historic details of a company
+def stockInformationHistoric(url):
+    session = HTMLSession()
+    requests = session.get(url).text
+
+    soup = BeautifulSoup(requests, "html5lib")
+
+    date = [x.span.text for x in soup.findAll("td", class_="Py(10px) Ta(start) Pend(10px)")][::-1]
+
+    if soup.findAll("td", class_="Py(10px) Pstart(10px)") != []:
+        volume = [x.span.text for x in soup.findAll("td", class_="Py(10px) Pstart(10px)")][::-1]
+
+    stockPrice = []
+    newVolume = []
+
+    for x in range(0, len(volume), 6):
+        stockPrice.append(float(volume[x+2]))
+        newVolume.append(int(volume[x].replace(",", "")))
+
+    returnArray = []
+
+    # stockPrice,stockChange,floatStockChange,investorConfidence,volume,volumePerMinute,month,day,year
+        # It's important to remember that the stockChange and floatStockChange are all based on 1 minute transactions.
+        # This is to better predict end of the day stock values
+            # So as to make sure that the values aren't locked in on the moment, but rather a general trend over the day
+    for x in range(len(date)):
+        if x - 1 >= 0:
+            returnArray.append([stockPrice[x], (float(stockPrice[x]) - float(stockPrice[x-1])), (100*(float(stockPrice[x]) - float(stockPrice[x-1])) / float(stockPrice[x-1])), None, newVolume[x], datetime.month, datetime.day, datetime.year])
+        else:
+            returnArray.append([stockPrice[x], None, None, None, newVolume[x], datetime.month, datetime.day, datetime.year])
+
+    return returnArray
