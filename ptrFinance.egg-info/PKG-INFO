@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.0.6
+Version: 0.0.8
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -23,6 +23,14 @@ The Historic Function has to be updated to allow for the new features
 
 Change Log
 ==========
+0.0.8 (2/8/2023)
+----------------
+stockInformation bug fix
+
+0.0.7 (2/8/2023)
+----------------
+stockInformation return function changes from Array to Dictionary
+
 0.0.6 (2/8/2023)
 ----------------
 Bug Fixes
