@@ -96,3 +96,11 @@ def stockInformationHistoric(url):
             returnArray.append([stockPrice[x], None, None, None, newVolume[x], datetime.month, datetime.day, datetime.year])
 
     return returnArray
+
+# Function used to return up to minute stock update
+def whileTrueStock(stockName, repetitions = -1):
+    session = HTMLSession()
+    requests = session.get("https://uk.finance.yahoo.com/quote/{stockname}?p={stockName}&.tsrc=fin-srch".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(requests, "html5lib")
+
