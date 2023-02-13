@@ -24,3 +24,7 @@ def repetitionsFunc(stockName, interval, repetitions):
     # Current Stock Price update
     currentPrice = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[4].text
 
+    if previousVol == 0 or previousVol == 0.0:
+        # Current Volume
+        previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
+    else:
