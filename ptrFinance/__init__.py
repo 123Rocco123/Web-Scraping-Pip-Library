@@ -125,3 +125,6 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
                 # Current Volume
                 previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
 
+            # The time sleep function below is used to allow enough time to pass to for the update to be useful
+            time.sleep(interval * 60)
+
