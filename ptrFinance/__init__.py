@@ -114,3 +114,8 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
             # Current Stock Price update
             currentPrice = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[4].text
 
+            if previousVol == 0 or previousVol == 0.0:
+                # Stock Price, Volume Per Min, high, low
+                print([currentPrice, float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", "")), high, low])
+                # Current Volume
+                previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
