@@ -8,6 +8,7 @@ import pandas as pd
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 from datetime import datetime
+from csv import writer
 
 # Function used to gather main information
 def stockInformation(url, url1, url2):
