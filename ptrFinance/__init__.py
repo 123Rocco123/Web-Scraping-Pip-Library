@@ -124,7 +124,7 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
 
     returnPD = pd.read_csv("{workingDirectory}/ptrFinance/repetitionCSV.csv".format(workingDirectory = os.getcwd()).replace("\\", "/"))
 
-    # Used to clear the repetitionCSV 
+    # Used to clear the repetitionCSV
     with open("{workingDirectory}/ptrFinance/repetitionCSV.csv".format(workingDirectory = os.getcwd()).replace("\\", "/"), "w") as f:
         writer = csv.writer(f)
 
@@ -132,4 +132,3 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
         writer.writerow(["stockPrice","volumePerMinute","high","low"])
 
     return returnPD
-
