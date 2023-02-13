@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.0.9
+Version: 0.0.10
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -19,38 +19,3 @@ The goal of the library is that of allowing developers to quickly and easily gat
 The functions in the package make use of requests_html, bs4, and csv libraries to make and save the requests.
 
 The Historic Function has to be updated to allow for the new features
-
-
-Change Log
-==========
-0.0.8 (2/8/2023)
-----------------
-stockInformation bug fix
-
-0.0.7 (2/8/2023)
-----------------
-stockInformation return function changes from Array to Dictionary
-
-0.0.6 (2/8/2023)
-----------------
-Bug Fixes
-
-0.0.5 (2/8/2023)
-----------------
-Metadata Changes
-
-0.0.4 (2/8/2023)
-----------------
-Historic Function Addition
-
-0.0.3 (2/8/2023)
-----------------
-Read Me Update
-
-0.0.2 (2/8/2023)
-----------------
-Stock Information Function
-
-0.0.1 (2/8/2023)
-----------------
-Initial Release
