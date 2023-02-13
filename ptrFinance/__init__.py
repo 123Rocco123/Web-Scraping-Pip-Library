@@ -99,7 +99,7 @@ def stockInformationHistoric(url):
     return returnArray
 
 # Function used to return up to minute stock update
-def whileTrueStock(stockName, repetitions = -1):
+def whileTrueStock(stockName, interval = 1, repetitions = -1):
     session = HTMLSession()
     requests = session.get("https://finance.yahoo.com/quote/{stockName}/history?p={stockName}".format(stockName = stockName)).text
 
