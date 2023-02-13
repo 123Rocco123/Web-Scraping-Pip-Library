@@ -1,12 +1,12 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.0.8
+Version: 0.0.9
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
 Author-email: whatsappbackuprocco@gmail.com
 License: MIT
-Keywords: Web Scraping
+Keywords: Web Scraping,Finance
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Intended Audience :: Financial and Insurance Industry
 Classifier: Operating System :: Microsoft :: Windows :: Windows 10
