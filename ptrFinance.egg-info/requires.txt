@@ -1,4 +1,8 @@
 bs4
 requests_html
 requests
+pandas
 datetime
+csv
+os
+time
