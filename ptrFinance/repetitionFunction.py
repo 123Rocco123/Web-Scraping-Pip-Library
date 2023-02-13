@@ -31,3 +31,10 @@ def repetitionsFunc(stockName, interval, repetitions):
         # Current Volume
         newVolume = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", "")) - previousVol
 
+    with open("{workingDirectory}/ptrFinance/repetitionCSV.csv".format(workingDirectory = os.getcwd()).replace("\\", "/"), "a") as f:
+        writer = csv.writer(f)
+
+        # Stock Price, Volume Per Min
+        writer.writerow([currentPrice, newVolume, high, low])
+
+        previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
