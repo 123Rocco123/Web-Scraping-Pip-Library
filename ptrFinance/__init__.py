@@ -108,31 +108,28 @@ def stockInformationHistoric(url):
 
 # Function used to return up to minute stock update
 def whileTrueStock(stockName, interval = 1, repetitions = -1):
-    session = HTMLSession()
-    requests = session.get("https://finance.yahoo.com/quote/{stockName}/history?p={stockName}".format(stockName = stockName)).text
-
-    soup = BeautifulSoup(requests, "html5lib")
-
+    # Infinite Repetitions
     if repetitions == -1:
-        previousVol = 0
-        while datetime.hour != "21":
-            high = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[2].text
-            low = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[3].text
-
-            # Current Stock Price update
-            currentPrice = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[4].text
-
-            if previousVol == 0 or previousVol == 0.0:
-                # Stock Price, Volume Per Min, high, low
-                print([currentPrice, float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", "")), high, low])
-                # Current Volume
-                previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
-            else:
-                # Stock Price, Volume Per Min
-                print([currentPrice, float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", "")) - previousVol, high, low])
-                # Current Volume
-                previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
+        while datetime.now().hour != "21":
+            repetitionFunction.repetitionsFunc(stockName, interval, repetitions)
 
             # The time sleep function below is used to allow enough time to pass to for the update to be useful
-            time.sleep(interval * 60)
+            time.sleep(interval * 1)
+    else:
+        for x in range(repetitions):
+            repetitionFunction.repetitionsFunc(stockName, interval, repetitions)
+
+            # The time sleep function below is used to allow enough time to pass to for the update to be useful
+            time.sleep(interval * 1)
+
+    returnPD = pd.read_csv("{workingDirectory}/ptrFinance/repetitionCSV.csv".format(workingDirectory = os.getcwd()).replace("\\", "/"))
+
+    # Used to clear the repetitionCSV 
+    with open("{workingDirectory}/ptrFinance/repetitionCSV.csv".format(workingDirectory = os.getcwd()).replace("\\", "/"), "w") as f:
+        writer = csv.writer(f)
+
+        # Feature Names
+        writer.writerow(["stockPrice","volumePerMinute","high","low"])
+
+    return returnPD
 
