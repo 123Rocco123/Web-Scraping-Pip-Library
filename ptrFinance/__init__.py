@@ -107,3 +107,7 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
 
     if repetitions == -1:
         previousVol = 0
+        while datetime.hour != "21":
+            high = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[2].text
+            low = soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"}).findAll("td")[3].text
+
