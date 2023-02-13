@@ -105,3 +105,4 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
 
     soup = BeautifulSoup(requests, "html5lib")
 
+    if repetitions == -1:
