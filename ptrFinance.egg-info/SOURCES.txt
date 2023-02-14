@@ -4,9 +4,10 @@ MANIFEST.in
 README.txt
 setup.py
 ptrFinance/__init__.py
-ptrFinance/repetitionFunction.py
+ptrFinance/repetitionCSV.csv
 ptrFinance.egg-info/PKG-INFO
 ptrFinance.egg-info/SOURCES.txt
 ptrFinance.egg-info/dependency_links.txt
 ptrFinance.egg-info/requires.txt
 ptrFinance.egg-info/top_level.txt
+ptrFinance/__pycache__/repetitionFunction.cpython-310.pyc
