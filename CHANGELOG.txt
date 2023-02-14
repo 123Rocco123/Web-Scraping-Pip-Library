@@ -1,0 +1,44 @@
+Change Log
+==========
+0.0.13 (2/14/2023)
+----------------
+Module Not Found Bug Fix
+0.0.13 (2/14/2023)
+----------------
+Bug Fixes
+0.0.12 (2/14/2023)
+----------------
+Bug Fixes
+0.0.11 (2/14/2023)
+----------------
+Changelog re-added
+0.0.10 (2/13/2023)
+----------------
+whileTrueStock csv functionality, infinite repetitions, and limited repetitions
+0.0.9 (2/13/2023)
+----------------
+whileTrueStock Function addition (Initial)
+0.0.8 (2/8/2023)
+----------------
+stockInformation bug fix
+0.0.7 (2/8/2023)
+----------------
+stockInformation return function changes from Array to Dictionary
+0.0.6 (2/8/2023)
+----------------
+Bug Fixes
+0.0.5 (2/8/2023)
+----------------
+Metadata Changes
+0.0.4 (2/8/2023)
+----------------
+Historic Function Addition
+0.0.3 (2/8/2023)
+----------------
+Read Me Update
+0.0.2 (2/8/2023)
+----------------
+Stock Information Function
+0.0.1 (2/8/2023)
+----------------
+Initial Release
