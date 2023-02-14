@@ -10,9 +10,9 @@ classifiers = [
 
 setup(
   name='ptrFinance',
-  version='0.0.10',
+  version='0.0.14',
   description='Financial Web Scraping Library',
-  long_description = open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
+  long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
   url='',
   author='Rocco Pio Maria Petruccio',
   author_email='whatsappbackuprocco@gmail.com',
@@ -20,5 +20,5 @@ setup(
   classifiers=classifiers,
   keywords=["Web Scraping", "Finance"],
   packages=find_packages(),
-  install_requires=['bs4', "requests_html", "requests", "pandas", "datetime", "csv", "os", "time"]
+  install_requires=['bs4', "requests_html", "requests", "pandas"]
 )
