@@ -143,13 +143,13 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
     # Infinite Repetitions
     if repetitions == -1:
         while datetime.now().hour != "21":
-            repetitionFunction.repetitionsFunc(stockName, interval, repetitions)
+            repetitionsFunc(stockName, interval, repetitions)
 
             # The time sleep function below is used to allow enough time to pass to for the update to be useful
             time.sleep(interval * 1)
     else:
         for x in range(repetitions):
-            repetitionFunction.repetitionsFunc(stockName, interval, repetitions)
+            repetitionsFunc(stockName, interval, repetitions)
 
             # The time sleep function below is used to allow enough time to pass to for the update to be useful
             time.sleep(interval * 1)
