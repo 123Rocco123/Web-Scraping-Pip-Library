@@ -170,6 +170,6 @@ def returnMostRecentArticles(stockName):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
     # Link used to contain the google finance page of the chosen stock
-    page = session.get("https://www.google.com/finance/quote/{stockName}:{marketIndex}".format(stockName = stockName, marketIndex = marketIndex)).text
+    page = session.get("https://www.marketwatch.com/investing/stock/{stockName}".format(stockName = stockName)).text
 
     soup = BeautifulSoup(page, "html5lib")
