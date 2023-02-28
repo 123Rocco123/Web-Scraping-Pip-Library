@@ -180,3 +180,9 @@ def returnMostRecentArticles(stockName):
 
 # Function used to gather the links of the news articles
 def returnWebArticles(stockName):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://www.marketwatch.com/investing/stock/{stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
