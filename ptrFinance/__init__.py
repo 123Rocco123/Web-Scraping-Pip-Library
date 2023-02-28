@@ -164,3 +164,12 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
         writer.writerow(["stockPrice","volumePerMinute","high","low"])
 
     return returnPD
+
+# Function used to get the most recent news articles
+def returnMostRecentArticles(stockName, marketIndex):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://www.google.com/finance/quote/{stockName}:{marketIndex}".format(stockName = stockName, marketIndex = marketIndex)).text
+
+    soup = BeautifulSoup(page, "html5lib")
