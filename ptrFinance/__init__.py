@@ -190,3 +190,5 @@ def returnWebArticles(stockName):
     newsTable = soup.findAll("div", {"class" : "article__content"})
     # Array used to contain the artile headlines of the markets
     links = [x.find("a", {"class" : "link"}) for x in newsTable]
+    # The return statement returns the links for the news articles
+    return [x["href"] for x in links if x["href"] != "#"]
