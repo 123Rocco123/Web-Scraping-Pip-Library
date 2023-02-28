@@ -1,6 +1,9 @@
 Change Log
 ==========
-0.0.13 (2/14/2023)
+0.0.15 (2/28/2023)
+----------------
+Return Title of Most Recent News Articles 
+0.0.14 (2/14/2023)
 ----------------
 Module Not Found Bug Fix
 0.0.13 (2/14/2023)
