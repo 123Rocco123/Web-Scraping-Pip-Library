@@ -173,3 +173,7 @@ def returnMostRecentArticles(stockName):
     page = session.get("https://www.marketwatch.com/investing/stock/{stockName}".format(stockName = stockName)).text
 
     soup = BeautifulSoup(page, "html5lib")
+    # The variable below contains the table for the table containing the news
+    newsTable = soup.findAll("div", {"class" : "article__content"})
+    # Return used to contain the artile headlines of the markets
+    return [x.find("a", {"class" : "link"}).text.replace("\n", "").strip() for x in newsTable]
