@@ -177,3 +177,6 @@ def returnMostRecentArticles(stockName):
     newsTable = soup.findAll("div", {"class" : "article__content"})
     # Return used to contain the artile headlines of the markets
     return [x.find("a", {"class" : "link"}).text.replace("\n", "").strip() for x in newsTable]
+
+# Function used to gather the links of the news articles
+def returnWebArticles(stockName):
