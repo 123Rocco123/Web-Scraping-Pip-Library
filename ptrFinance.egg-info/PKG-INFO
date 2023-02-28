@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.0.14
+Version: 0.0.15
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -13,9 +13,3 @@ Classifier: Operating System :: Microsoft :: Windows :: Windows 10
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Programming Language :: Python :: 3
 License-File: LICENCE.txt
-
-The goal of the library is that of allowing developers to quickly and easily gather relevant stock information about a company without having to spend too much time making sure that only the necessary information was gathered.
-
-The functions in the package make use of requests_html, bs4, and csv libraries to make and save the requests.
-
-The Historic Function has to be updated to allow for the new features
