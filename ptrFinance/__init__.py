@@ -166,7 +166,7 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
     return returnPD
 
 # Function used to get the most recent news articles
-def returnMostRecentArticles(stockName, marketIndex):
+def returnMostRecentArticles(stockName):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
     # Link used to contain the google finance page of the chosen stock
