@@ -190,5 +190,12 @@ def returnWebArticles(stockName, mostRecent = False, numberOfArticles = 0):
     newsTable = soup.findAll("div", {"class" : "article__content"})
     # Array used to contain the artile headlines of the markets
     links = [x.find("a", {"class" : "link"}) for x in newsTable]
-    # The return statement returns the links for the news articles
-    return [x["href"] for x in links if x["href"] != "#"]
+
+    # If-Else block used to allow user to select most recent articles, specific articles, or all articles
+    if mostRecent == True:
+        return links[0]
+    elif numberOfArticles != 0 and numberOfArticles > 0:
+        return links[:numberOfArticles]
+    else:
+        # The return statement returns the links for the news articles
+        return [x["href"] for x in links if x["href"] != "#"]
