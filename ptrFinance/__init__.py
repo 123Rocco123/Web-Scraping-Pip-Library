@@ -215,3 +215,6 @@ def returnArticleAndLink(stockName):
     for x in articleTitles:
         returnArticles[x] = links[articleTitles.index(x)]
 
+    # The return statement will return the dictionary containig the titles of the website and their links
+    return returnArticles
+
