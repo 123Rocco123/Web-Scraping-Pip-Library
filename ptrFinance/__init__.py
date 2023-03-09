@@ -165,7 +165,7 @@ def whileTrueStock(stockName, interval = 1, repetitions = -1):
 
     return returnPD
 
-# Function used to get the most recent news articles
+# Function used to get the most recent news articles - O(1)
 def returnMostRecentArticles(stockName):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
@@ -178,7 +178,7 @@ def returnMostRecentArticles(stockName):
     # Return used to contain the artile headlines of the markets
     return [x.find("a", {"class" : "link"}).text.replace("\n", "").strip() for x in newsTable]
 
-# Function used to gather the links of the news articles
+# Function used to gather the links of the news articles - O(1)
 def returnWebArticles(stockName, mostRecent = False, numberOfArticles = 0):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
