@@ -1,5 +1,8 @@
 Change Log
 ==========
+0.0.18 (3/9/2023)
+----------------
+Return Article with Link function added
 0.0.17 (3/5/2023)
 ----------------
 Updated and Expanded Return Links to Articles
