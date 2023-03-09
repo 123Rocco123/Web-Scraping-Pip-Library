@@ -199,3 +199,19 @@ def returnWebArticles(stockName, mostRecent = False, numberOfArticles = 0):
     else:
         # The return statement returns the links for the news articles
         return [x["href"] for x in links if x["href"] != "#"]
+
+# Function used to return the name of the article with its respecitve link - O(n)
+def returnArticleAndLink(stockName):
+    # Array contains the titles of the stock that the user has selected
+    articleTitles = [x for x in returnMostRecentArticles(stockName) if x != ""]
+
+    # Contains the links to all of the articles for the specified stock
+    links = returnWebArticles(stockName)
+
+    # Dictionary used to contain the articles and their links that meet the requirements
+    returnArticles = {}
+
+    # First for loop used to iterate over the article title array
+    for x in articleTitles:
+        returnArticles[x] = links[articleTitles.index(x)]
+
