@@ -179,6 +179,7 @@ def returnMostRecentArticles(stockName):
     return [x.find("a", {"class" : "link"}).text.replace("\n", "").strip() for x in newsTable]
 
 # Function used to gather the links of the news articles - O(1)
+    # It's important to note that the links returned from this function are differ somewhat from the returnArticleAndLink, even though they are the same
 def returnWebArticles(stockName, mostRecent = False, numberOfArticles = 0):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
