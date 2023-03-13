@@ -220,3 +220,20 @@ def returnArticleAndLink(stockName):
     # The return statement will return the dictionary containig the titles of the website and their links
     return returnArticles
 
+# Function used to return the daily automated stock review article
+def returnDailyStockReviewArticle(stockName):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://www.marketwatch.com/investing/stock/{stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+    # The variable below contains the table for the table containing the news
+    newsTable = soup.findAll("div", {"class" : "article__content"})
+
+    # For loop used to check for the daily updated value
+    for x in range(len(newsTable)):
+        # If statement used to check for the most recent day's stock summary article
+        if newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"].find("{year}-{month}-{day}".format(year = datetime.now().year, month = datetime.now().month, day = datetime.now().day)):
+            return newsTable[x].find("a")["href"]
+
