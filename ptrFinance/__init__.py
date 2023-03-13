@@ -194,7 +194,8 @@ def returnWebArticles(stockName, mostRecent = False, numberOfArticles = 0):
 
     # If-Else block used to allow user to select most recent articles, specific articles, or all articles
     if mostRecent == True:
-        return links[0]
+        # If the user selects that they want the most recent article, then an array with the name of the article, and the article's link is returned
+        return [links[0].text.replace("\n", "").strip(), links[0]["href"]]
     elif numberOfArticles != 0 and numberOfArticles > 0:
         return links[:numberOfArticles]
     else:
