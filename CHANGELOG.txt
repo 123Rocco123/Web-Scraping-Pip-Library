@@ -1,5 +1,8 @@
 Change Log
 ==========
+0.0.19 (3/13/2023)
+----------------
+returnWebArticles mostRecent if statement return update
 0.0.18 (3/9/2023)
 ----------------
 Return Article with Link function added
