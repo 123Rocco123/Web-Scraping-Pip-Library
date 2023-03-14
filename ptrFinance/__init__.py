@@ -2,6 +2,8 @@ import requests
 import time
 import os
 import csv
+# Used to search using our default webbrowser
+import webbrowser
 
 import pandas as pd
 
