@@ -10,9 +10,9 @@ classifiers = [
 
 setup(
   name='ptrFinance',
-  version='0.0.20',
+  version='0.0.26',
   description='Financial Web Scraping Library',
-  #long_description=open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
+  long_description= open('README.txt').read(),
   url='',
   author='Rocco Pio Maria Petruccio',
   author_email='whatsappbackuprocco@gmail.com',
