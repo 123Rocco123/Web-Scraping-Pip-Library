@@ -263,3 +263,5 @@ def returnDateOfArticle(stockName):
     # Array used to contain the name of the article, its link, and its date
     returnDictionary = []
 
+    # For loop used to check for the daily updated value
+    for x in range(len(newsTable)):
