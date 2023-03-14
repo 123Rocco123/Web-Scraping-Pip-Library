@@ -251,3 +251,11 @@ def returnDailyStockReviewArticle(stockName, openArticle = False):
 
 # Function used to return the name, date, and link of the article of the stock that the user specifies
 def returnDateOfArticle(stockName):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://www.marketwatch.com/investing/stock/{stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+    # The variable below contains the table for the table containing the news
+    newsTable = soup.findAll("div", {"class" : "article__content"})
