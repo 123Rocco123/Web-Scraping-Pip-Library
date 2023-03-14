@@ -222,8 +222,9 @@ def returnArticleAndLink(stockName):
     # The return statement will return the dictionary containig the titles of the website and their links
     return returnArticles
 
-# Function used to return the daily automated stock review article
-def returnDailyStockReviewArticle(stockName):
+# Function used to return the daily automated stock review article - O(1)
+    # openArticle parameter is used in case the user wants the function to automatically open the article in their browser
+def returnDailyStockReviewArticle(stockName, openArticle = False):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
     # Link used to contain the google finance page of the chosen stock
