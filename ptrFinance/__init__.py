@@ -248,3 +248,6 @@ def returnDailyStockReviewArticle(stockName, openArticle = False):
         except:
             continue
 
+
+# Function used to return the name, date, and link of the article of the stock that the user specifies
+def returnDateOfArticle(stockName):
