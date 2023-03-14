@@ -236,7 +236,15 @@ def returnDailyStockReviewArticle(stockName, openArticle = False):
 
     # For loop used to check for the daily updated value
     for x in range(len(newsTable)):
-        # If statement used to check for the most recent day's stock summary article
-        if newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"].find("{year}-{month}-{day}".format(year = datetime.now().year, month = datetime.now().month, day = datetime.now().day)):
-            return newsTable[x].find("a")["href"]
+        # Try-Catch used incase of a Nonetype error
+        try:
+            # If statement used to check for the most recent day's stock summary article
+            if str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"]) == "{year}-{month}-{day}T16:36:00".format(year = datetime.now().year, month = datetime.now().strftime("%m"), day = datetime.now().day):
+                if openArticle == False:
+                    return newsTable[x].find("a")["href"]
+                else:
+                    webbrowser.open(newsTable[x].find("a")["href"])
+                    break
+        except:
+            continue
 
