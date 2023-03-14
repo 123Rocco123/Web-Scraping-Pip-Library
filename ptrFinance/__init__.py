@@ -277,3 +277,5 @@ def returnDateOfArticle(stockName):
 
         except:
             continue
+
+    return returnDictionary
