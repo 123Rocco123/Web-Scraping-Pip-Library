@@ -265,3 +265,15 @@ def returnDateOfArticle(stockName):
 
     # For loop used to check for the daily updated value
     for x in range(len(newsTable)):
+        # Try-Catch used incase of a Nonetype error
+        try:
+            # Used to gather just the date of the article rather than the time of it as well
+            nameOfArticle = newsTable[x].find("a").text.strip()
+            dateOfArticle = str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"])[:10]
+            linkOfArticle = newsTable[x].find("a")["href"]
+
+            # Array contains the information of the article gathered from the website
+            returnDictionary.append([nameOfArticle, dateOfArticle, linkOfArticle])
+
+        except:
+            continue
