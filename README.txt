@@ -1,5 +1,85 @@
 The goal of the library is that of allowing developers to quickly and easily gather relevant stock information about a company without having to spend too much time making sure that only the necessary information was gathered.
 
-The functions in the package make use of requests_html, bs4, and csv libraries to make and save the requests.
+Documentation is the process of being created to improve the ease of use of the library.
 
-The Historic Function has to be updated to allow for the new features
+The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping-Pip-Library
+
+Change Log
+==========
+Version "0.0.26" (2/14/2023)
+Change Log Fixed
+
+Version "0.0.25" (2/14/2023)
+Change Log Fix
+
+Version "0.0.24" (3/14/2023)
+README Fixed
+
+Version "0.0.23" (3/14/2023)
+returnDateOfArticle function creation
+
+Version "0.0.22" (3/14/2023)
+webbrowser bug fix
+
+Version "0.0.21" (3/14/2023)
+returnDailyStockReviewArticle webbrowser functionality addition
+
+Version "0.0.20" (3/13/2023)
+returnDailyStockReviewArticle function creation
+
+Version "0.0.19" (3/13/2023)
+returnWebArticles mostRecent if statement return update
+
+Version "0.0.18" (3/9/2023)
+Return Article with Link function added
+
+Version "0.0.17" (3/5/2023)
+Updated and Expanded Return Links to Articles
+
+Version "0.0.16" (2/28/2023)
+Return Links to Articles
+
+Version "0.0.15" (2/28/2023)
+Return Title of Most Recent News Articles
+
+Version "0.0.14" (2/14/2023)
+Module Not Found Bug Fix
+
+Version "0.0.13" (2/14/2023)
+Bug Fixes
+
+Version "0.0.12" (2/14/2023)
+Bug Fixes
+
+Version "0.0.11" (2/14/2023)
+Changelog re-added
+
+Version "0.0.10" (2/13/2023)
+whileTrueStock csv functionality, infinite repetitions, and limited repetitions
+
+Version "0.0.9" (2/13/2023)
+whileTrueStock Function addition (Initial)
+
+Version "0.0.8" (2/8/2023)
+stockInformation bug fix
+
+Version "0.0.7" (2/8/2023)
+stockInformation return function changes from Array to Dictionary
+
+Version "0.0.6" (2/8/2023)
+Bug Fixes
+
+Version "0.0.5" (2/8/2023)
+Metadata Changes
+
+Version "0.0.4" (2/8/2023)
+Historic Function Addition
+
+Version "0.0.3" (2/8/2023)
+Read Me Update
+
+Version "0.0.2" (2/8/2023)
+Stock Information Function
+
+Version "0.0.1" (2/8/2023)
+Initial Release
