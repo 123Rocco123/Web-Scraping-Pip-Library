@@ -259,3 +259,7 @@ def returnDateOfArticle(stockName):
     soup = BeautifulSoup(page, "html5lib")
     # The variable below contains the table for the table containing the news
     newsTable = soup.findAll("div", {"class" : "article__content"})
+
+    # Array used to contain the name of the article, its link, and its date
+    returnDictionary = []
+
