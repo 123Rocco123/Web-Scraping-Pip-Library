@@ -290,3 +290,6 @@ def returnAnalystRatings(stockName, marketName):
 
     soup = BeautifulSoup(page, "html5lib")
 
+    # Variable used to contain the ratings table for the stock by the different companies
+    ratingsTable = soup.find("div", {"id" : "cphPrimaryContent_cphTabContent_pnlPriceUpdate"})
+
