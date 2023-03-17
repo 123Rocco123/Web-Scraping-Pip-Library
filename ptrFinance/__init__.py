@@ -298,3 +298,5 @@ def returnAnalystRatings(stockName, marketName):
         # Variable contains the individual ratings of the brokarage for the stock
         brokerageRatings = ratingsTable.find("tbody").findAll("tr")
 
+        # Return array is used to contain and then eventually return all the analyst ratings
+        returnArray = []
