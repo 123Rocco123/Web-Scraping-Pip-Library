@@ -321,3 +321,6 @@ def returnAnalystRatings(stockName, marketName):
 
         return returnArray
 
+    except:
+        print("Couldn't find the stock, check spelling")
+        return -1
