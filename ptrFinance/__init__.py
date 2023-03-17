@@ -319,3 +319,5 @@ def returnAnalystRatings(stockName, marketName):
                 # Append the row to the returnArray
                 returnArray.append(toAppend)
 
+        return returnArray
+
