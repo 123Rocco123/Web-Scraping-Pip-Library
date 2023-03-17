@@ -293,3 +293,8 @@ def returnAnalystRatings(stockName, marketName):
     # Variable used to contain the ratings table for the stock by the different companies
     ratingsTable = soup.find("div", {"id" : "cphPrimaryContent_cphTabContent_pnlPriceUpdate"})
 
+    # Try-Except statement is used to check that the
+    try:
+        # Variable contains the individual ratings of the brokarage for the stock
+        brokerageRatings = ratingsTable.find("tbody").findAll("tr")
+
