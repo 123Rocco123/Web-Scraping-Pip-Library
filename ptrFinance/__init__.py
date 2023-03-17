@@ -279,3 +279,7 @@ def returnDateOfArticle(stockName):
             continue
 
     return returnDictionary
+
+# Function used to return the most recent analyst ratings for a specified stock - O(n)
+    # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
+def returnAnalystRatings(stockName, marketName):
