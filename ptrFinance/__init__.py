@@ -283,3 +283,10 @@ def returnDateOfArticle(stockName):
 # Function used to return the most recent analyst ratings for a specified stock - O(n)
     # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
 def returnAnalystRatings(stockName, marketName):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://www.marketbeat.com/stocks/{marketName}/{stockName}/price-target/".format(stockName = stockName, marketName = marketName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+
