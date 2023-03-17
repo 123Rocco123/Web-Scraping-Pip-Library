@@ -300,3 +300,22 @@ def returnAnalystRatings(stockName, marketName):
 
         # Return array is used to contain and then eventually return all the analyst ratings
         returnArray = []
+        # For loop used to iterate over the table containing the brokerage ratings
+        for x in brokerageRatings:
+            toAppend = [y.text for y in x.findAll("td")]
+
+            # Remove the subscribe row
+            if len(toAppend) != 1:
+                # Replace the subscribe text placed into the second index of the toAppend cell
+                toAppend[1] = toAppend[1].replace("Subscribe to MarketBeat All Access for the recommendation accuracy rating", "")
+
+                # Remove the indexes that aren't related to the brokarage ratings
+                del toAppend[2]
+                del toAppend[len(toAppend) - 1]
+
+                if "" in toAppend:
+                    del toAppend[toAppend.index("")]
+
+                # Append the row to the returnArray
+                returnArray.append(toAppend)
+
