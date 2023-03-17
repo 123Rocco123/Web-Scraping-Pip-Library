@@ -6,6 +6,9 @@ The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping
 
 Change Log
 ==========
+Version "0.0.27" (2/17/2023)
+Return most recent brokerage ratings for a specified stock within a specified market (E.g. Nasdaq)
+
 Version "0.0.26" (2/14/2023)
 Change Log Fixed
 
