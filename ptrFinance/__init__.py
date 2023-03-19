@@ -291,6 +291,9 @@ def returnSpecificDateOfArticle(stockName, month = 0, day = 0, year = 0, today =
     # The variable below contains the table for the table containing the news
     newsTable = soup.findAll("div", {"class" : "article__content"})
 
+    # Array used to contain the name of the article, its link, and its date
+    articleArray = []
+
 # Function used to return the most recent analyst ratings for a specified stock - O(n)
     # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
 def returnAnalystRatings(stockName, marketName):
