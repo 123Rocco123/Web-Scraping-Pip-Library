@@ -294,6 +294,21 @@ def returnSpecificDateOfArticle(stockName, month = 0, day = 0, year = 0, today =
     # Array used to contain the name of the article, its link, and its date
     articleArray = []
 
+    # For loop used to check for the daily updated value
+    for x in range(len(newsTable)):
+        # Try-Catch used incase of a Nonetype error
+        try:
+            # Used to gather just the date of the article rather than the time of it as well
+            nameOfArticle = newsTable[x].find("a").text.strip()
+            dateOfArticle = str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"])[:10]
+            linkOfArticle = newsTable[x].find("a")["href"]
+
+            # Array contains the information of the article gathered from the website
+            articleArray.append([nameOfArticle, dateOfArticle, linkOfArticle])
+
+        except:
+            continue
+
 # Function used to return the most recent analyst ratings for a specified stock - O(n)
     # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
 def returnAnalystRatings(stockName, marketName):
