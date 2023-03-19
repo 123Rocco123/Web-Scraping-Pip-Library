@@ -280,6 +280,8 @@ def returnDateOfArticle(stockName):
 
     return returnArray
 
+# Function used to return articles of a specified date
+def returnSpecificDateOfArticle(stockName, month = 0, day = 0, year = 0, today = False):
 # Function used to return the most recent analyst ratings for a specified stock - O(n)
     # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
 def returnAnalystRatings(stockName, marketName):
