@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.0.27
+Version: 0.0.28
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -20,8 +20,12 @@ Documentation is the process of being created to improve the ease of use of the 
 
 The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping-Pip-Library
 
+
 Change Log
 ==========
+Version "0.0.27" (2/19/2023)
+returnSpecificDateOfArticle function creation, used to return articles of a specified date or of the day
+
 Version "0.0.27" (2/17/2023)
 Return most recent brokerage ratings for a specified stock within a specified market (E.g. Nasdaq)
 
