@@ -249,7 +249,7 @@ def returnDailyStockReviewArticle(stockName, openArticle = False):
             continue
 
 
-# Function used to return the name, date, and link of the article of the stock that the user specifies
+# Function used to return the name, date, and link of the article of the stock that the user specifies - O(n)
 def returnDateOfArticle(stockName):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
@@ -261,7 +261,7 @@ def returnDateOfArticle(stockName):
     newsTable = soup.findAll("div", {"class" : "article__content"})
 
     # Array used to contain the name of the article, its link, and its date
-    returnDictionary = []
+    returnArray = []
 
     # For loop used to check for the daily updated value
     for x in range(len(newsTable)):
@@ -273,12 +273,12 @@ def returnDateOfArticle(stockName):
             linkOfArticle = newsTable[x].find("a")["href"]
 
             # Array contains the information of the article gathered from the website
-            returnDictionary.append([nameOfArticle, dateOfArticle, linkOfArticle])
+            returnArray.append([nameOfArticle, dateOfArticle, linkOfArticle])
 
         except:
             continue
 
-    return returnDictionary
+    return returnArray
 
 # Function used to return the most recent analyst ratings for a specified stock - O(n)
     # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
