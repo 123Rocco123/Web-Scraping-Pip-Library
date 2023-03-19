@@ -312,6 +312,27 @@ def returnSpecificDateOfArticle(stockName, month = 0, day = 0, year = 0, today =
     # Array contains the articles that have the matching date
     returnArray = []
 
+    # If-Else block used to depending on if the use has specified a date or not
+    if today == False:
+        specifiedDate = "{year}-{month}-{day}".format(year = year, month = month, day = day)
+
+        # For loop used to check for the date inside of the elements
+        for x in articleArray:
+            # If condition is used to check that if the article is of the specified date
+            if x[1] == specifiedDate:
+                returnArray.append(x)
+    else:
+        # Variable is used to contain todays date
+        currentDate = str(datetime.now())[:10]
+
+        # For loop used to check for the date inside of the elements
+        for x in articleArray:
+            # If condition is used to check that if the article is of the specified date
+            if x[1] == currentDate:
+                returnArray.append(x)
+
+    return returnArray
+
 # Function used to return the most recent analyst ratings for a specified stock - O(n)
     # Return values: Date, Brokerage Name, Action, Rating, Price Target, Upside / Downside on Report Date
 def returnAnalystRatings(stockName, marketName):
