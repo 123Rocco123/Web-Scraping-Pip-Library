@@ -388,3 +388,15 @@ def returnAnalystRatings(stockName, marketName):
     except:
         print("Couldn't find the stock, check spelling")
         return -1
+
+# Function used to return the percentage chance that a company may be going bankrupt
+def bankrupt(stockName):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://www.macroaxis.com/invest/ratio/{stockName}/Probability-Of-Bankruptcy".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+
+    # Returns the percentage chance that a company will go bankrupt
+    return soup.find("div", {"class" : "importantValue"}).text.strip()
