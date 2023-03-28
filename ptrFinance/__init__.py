@@ -224,7 +224,9 @@ def returnArticleAndLink(stockName):
 
 # Function used to return the daily automated stock review article - O(1)
     # openArticle parameter is used in case the user wants the function to automatically open the article in their browser
-def returnDailyStockReviewArticle(stockName, openArticle = False):
+    # specificDay parameter is used in case the user wants to find the article of a specific day
+        # The month, day, and year parameters are used to specify the date
+def returnDailyStockReviewArticle(stockName, openArticle = False, specificDay = False, month = None, day = None, year = None):
     # Requests is used to get the HTML page that we need to parse over
     session = HTMLSession()
     # Link used to contain the google finance page of the chosen stock
