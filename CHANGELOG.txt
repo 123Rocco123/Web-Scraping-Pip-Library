@@ -1,6 +1,10 @@
 Change Log
 ==========
-Version "0.0.27" (2/19/2023)
+Version "0.0.29" (2/28/2023)
+returnDailyStockReviewArticle function updated. Allows users to now specify the date that of the daily stock review article
+bankrupt function created. Used to return the percentage chance that a company may go bankrupt
+
+Version "0.0.28" (2/19/2023)
 returnSpecificDateOfArticle function creation, used to return articles of a specified date or of the day
 
 Version "0.0.27" (2/17/2023)
