@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.0.29
+Version: 0.1.2
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -23,6 +23,16 @@ The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping
 
 Change Log
 ==========
+Version "0.1.2" (2/30/2023)
+returnDailyStockReviewArticle different companies bug fix
+
+Version "0.1.1" (2/30/2023)
+Bug Fix
+
+Version "0.1.0" (2/30/2023)
+impliedVolatilityFunc creation. Used to return the current specified stocks volatility, as well as the previous months volitility.
+Depending on the parameter, it will either return a string, or the values in an array format
+
 Version "0.0.29" (2/28/2023)
 returnDailyStockReviewArticle function updated. Allows users to now specify the date that of the daily stock review article
 bankrupt function created. Used to return the percentage chance that a company may go bankrupt
