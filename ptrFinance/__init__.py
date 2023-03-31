@@ -402,3 +402,29 @@ def bankrupt(stockName):
 
     # Returns the percentage chance that a company will go bankrupt
     return soup.find("div", {"class" : "importantValue"}).text.strip()
+
+# Function used to return the volatility of a specified function
+    # stockName parameter is used to contain the stock naming format of the user specified company
+    # stringOutput is used to specifiy if we need
+def impliedVolatilityFunc(stockName, stringOutput = True):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://volafy.net/equity/{stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+
+    # Returns the percentage chance of a company's current volatility
+    volatilityPercent = soup.find("div", {"style" : "max-width:150px;position:relative;text-align:center"}).find("b").text.replace("Implied Volatility:", "")
+    #  Returns the percentage chance of a company's last month volatility
+    previousVolatilityPercent = soup.find("table", {"class" : "table table-sm table-striped table-hover"}).findAll("tr")[5].find("div", {"style" : "position:relative;width:120px"}).text
+    # Percentage Difference
+    percentageDifference = str(float(volatilityPercent.replace("%", "")) - float(previousVolatilityPercent.replace("%", "")))[:4]
+
+    # If-Else block used to return either a string or an array output
+        # The string output is to format the volatility for the users
+        # The array output gives the float values to allow users to add that information to their files or for calculations
+    if stringOutput == True:
+        return "Current Volatility: {volatilityPercent}\nPrevious Volatility: {previousVolatilityPercent}\nPercentage Difference: {percentageDifference}".format(volatilityPercent = volatilityPercent, previousVolatilityPercent = previousVolatilityPercent, percentageDifference = percentageDifference)
+    else:
+        return [float(volatilityPercent.replace("%", "")), float(previousVolatilityPercent), float(percentageDifference)]
