@@ -243,20 +243,22 @@ def returnDailyStockReviewArticle(stockName, openArticle = False, specificDay = 
             # If-Else block is used if the user decides to find the automated article of a specific day or not
             if specificDay == False:
                 # If statement used to check for the most recent day's stock summary article
-                if str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"]) == "{year}-{month}-{day}T16:36:00".format(year = datetime.now().year, month = datetime.now().strftime("%m"), day = datetime.now().day):
-                    if openArticle == False:
-                        return newsTable[x].find("a")["href"]
-                    else:
-                        webbrowser.open(newsTable[x].find("a")["href"])
-                        break
+                if "{year}-{month}-{day}".format(year = datetime.now().year, month = datetime.now().strftime("%m"), day = datetime.now().day) in str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"]):
+                    if newsTable[x].find("span", {"class" : "article__author"}).text == "by MarketWatch Automation":
+                        if openArticle == False:
+                            return newsTable[x].find("a")["href"]
+                        else:
+                            webbrowser.open(newsTable[x].find("a")["href"])
+                            break
             else:
                 # If statement used to check for the most recent day's stock summary article
-                if str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"]) == "{year}-{month}-{day}T16:36:00".format(year = year, month = month, day = day):
-                    if openArticle == False:
-                        return newsTable[x].find("a")["href"]
-                    else:
-                        webbrowser.open(newsTable[x].find("a")["href"])
-                        break
+                if "{year}-{month}-{day}".format(year = year, month = month, day = day) in str(newsTable[x].find("span", {"class" : "article__timestamp"})["data-est"]):
+                    if newsTable[x].find("span", {"class" : "article__author"}).text == "by MarketWatch Automation":
+                        if openArticle == False:
+                            return newsTable[x].find("a")["href"]
+                        else:
+                            webbrowser.open(newsTable[x].find("a")["href"])
+                            break
         except:
             continue
 
