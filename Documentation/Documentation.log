@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.10.8)  27 MAY 2023 17:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7) (preloaded format=pdflatex 2022.10.8)  28 MAY 2023 03:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -142,26 +142,35 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 )) [1
 
 {C:/Users/dodob/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
-(Documentation.toc)
+(Documentation.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
 \tf@toc=\write3
 \openout3 = `Documentation.toc'.
 
- [1] [2] (Documentation.aux) ) 
+ [1] [2] [3] [4] [5] [6] (Documentation.aux) ) 
 Here is how much of TeX's memory you used:
- 3072 strings out of 478338
- 49732 string characters out of 2836700
- 348490 words of memory out of 3000000
- 21520 multiletter control sequences out of 15000+600000
- 470815 words of font info for 33 fonts, out of 8000000 for 9000
+ 3080 strings out of 478338
+ 49840 string characters out of 2836700
+ 354490 words of memory out of 3000000
+ 21526 multiletter control sequences out of 15000+600000
+ 471458 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,5n,62p,220b,262s stack positions out of 10000i,1000n,20000p,200000b,80000s
-<C:/Users/dodob/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/dodob/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/dodob/AppData/Local/Pr
-ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Documentation.pdf (3 pages, 37527 bytes).
+ 55i,5n,62p,282b,262s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ <C:\Users\dodob\AppData\Local\Mi
+KTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/dodob/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/dodob/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users
+/dodob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+<C:/Users/dodob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/dodob/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmti10.pfb>
+Output written on Documentation.pdf (7 pages, 82129 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
+ 56 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
