@@ -15,6 +15,23 @@ from csv import writer
 # Class Variable
 previousVol = 0
 
+# Function used to get the current stock values of the specified stocks
+    # stocks parameter is used to contain the array with all the names of the stocks
+def getLiveValues(stocks):
+    # Return array used to contain the live values for each stock
+    liveValues = {}
+
+    # Iterate over the file
+    for x in stocks:
+        session = HTMLSession()
+        stockValues = session.get("https://finance.yahoo.com/quote/{stock}".format(stock = x)).text
+        soup = BeautifulSoup(stockValues, "html5lib")
+
+        # Append the stock with the current value
+        liveValues[x] = soup.find("fin-streamer", {"class" : "Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text
+
+    return liveValues
+
 # Used for the whileTrueStock
 def repetitionsFunc(stockName, interval, repetitions):
     global previousVol
