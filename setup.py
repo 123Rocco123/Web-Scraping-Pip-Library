@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
   name='ptrFinance',
-  version='0.1.3',
+  version='0.1.5',
   description='Financial Web Scraping Library',
   long_description= open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
   url='',
@@ -20,5 +20,5 @@ setup(
   classifiers=classifiers,
   keywords=["Web Scraping", "Finance"],
   packages=find_packages(),
-  install_requires=['bs4', "requests_html", "requests", "pandas"]
+  install_requires=['bs4', "requests_html", "requests", "pandas", "numpy"]
 )
