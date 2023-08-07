@@ -2,3 +2,4 @@ bs4
 requests_html
 requests
 pandas
+numpy
