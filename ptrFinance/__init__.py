@@ -6,6 +6,7 @@ import csv
 import webbrowser
 
 import pandas as pd
+import numpy as np
 
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
