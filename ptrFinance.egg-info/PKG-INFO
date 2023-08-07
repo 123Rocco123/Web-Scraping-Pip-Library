@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.1.3
+Version: 0.1.5
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -23,7 +23,14 @@ The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping
 
 Change Log
 ==========
-Version "0.1.2" (2/30/2023)
+Version "0.1.5" (8/7/2023)
+Bug Fix
+
+Version "0.1.4" (8/7/2023)
+Stock volatility given a specific time period function added (NO MORE THAN 4 MONTHS)
+Will change to selenium for it later on, and add another function for custom data
+
+Version "0.1.3" (5/28/2023)
 getLiveValues function added
 
 Version "0.1.2" (2/30/2023)
