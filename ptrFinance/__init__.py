@@ -446,3 +446,41 @@ def impliedVolatilityFunc(stockName, stringOutput = True):
         return "Current Volatility: {volatilityPercent}\nPrevious Volatility: {previousVolatilityPercent}\nPercentage Difference: {percentageDifference}".format(volatilityPercent = volatilityPercent, previousVolatilityPercent = previousVolatilityPercent, percentageDifference = percentageDifference)
     else:
         return [float(volatilityPercent.replace("%", "")), float(previousVolatilityPercent), float(percentageDifference)]
+
+# Function used to return the volatility of a given time set
+def returnVolatilityGivenTime(stockName, numberOfDays):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://finance.yahoo.com/quote/{stockName}/history?p={stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+    # Variable used to contain the table with the historic data
+    historicData = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")[1:]
+    # Array used to contain the closedValues
+    closedValues = []
+
+    currentDays = 1
+    for x in historicData:
+        for dataPoints in x:
+            if (x.index(dataPoints) % 4 == 0 and x.index(dataPoints) != 0) and currentDays <= numberOfDays + 1:
+                closedValues.append(float(dataPoints.text))
+                currentDays += 1
+
+    # Memory Management
+    del session, page, soup, historicData, currentDays
+
+    # Used to calculate the daily returns of the stock over the week
+    dailyReturn = [closedValues[x] - closedValues[x - 1] for x in range(1, 8)]
+    # Contains the average daily return
+    averageReturn = np.average(dailyReturn)
+    # Contains the squared differences for each daily return
+    dailyReturn = [(x - averageReturn) ** 2 for x in dailyReturn]
+    # Save Memory
+    del averageReturn
+    # Contains the variance
+    varianceOfSquaredDiff = sum(dailyReturn) / 7
+    del dailyReturn
+
+    # Returns the volatility of the stock
+    return np.sqrt(varianceOfSquaredDiff)
