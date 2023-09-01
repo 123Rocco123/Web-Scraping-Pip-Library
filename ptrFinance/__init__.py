@@ -65,6 +65,18 @@ def repetitionsFunc(stockName, interval, repetitions):
 
         previousVol = float((soup.find("tr", {"class" : "BdT Bdc($seperatorColor) Ta(end) Fz(s) Whs(nw)"})).findAll("td")[6].text.replace(",", ""))
 
+# Functions used to gather stock information from Yahoo Finance
+
+# Return the closing stock price
+def closeValue(stockName):
+    # Create the session for webscraping
+    session = HTMLSession()
+    page = session.get("https://finance.yahoo.com/quote/{stockName}?p={stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+
+    return float(soup.find("fin-streamer", {"class" : "Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text)
+
 # Function used to gather main information
 def stockInformation(url, url1, url2):
     # Requests is used to get the HTML page that we need to parse over
