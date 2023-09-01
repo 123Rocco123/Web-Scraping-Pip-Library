@@ -113,6 +113,18 @@ def dayLowValue(stockName):
     stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")
     return float(stockInfoBody[1].findAll("td")[3].text)
 
+# Return the high price for the day
+def dayHighValue(stockName):
+    # Create the session for webscraping
+    session = HTMLSession()
+    page = session.get("https://finance.yahoo.com/quote/{stockName}/history?p={stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+
+    # Used to contain the body where the info is kept
+    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")
+    return float(stockInfoBody[1].findAll("td")[2].text)
+
 # Function used to gather main information
 def stockInformation(url, url1, url2):
     # Requests is used to get the HTML page that we need to parse over
