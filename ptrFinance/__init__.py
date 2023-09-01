@@ -77,6 +77,18 @@ def closeValue(stockName):
 
     return float(soup.find("fin-streamer", {"class" : "Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text)
 
+# Return the previous closing price
+def previousClose(stockName):
+    # Create the session for webscraping
+    session = HTMLSession()
+    page = session.get("https://finance.yahoo.com/quote/{stockName}?p={stockName}".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(page, "html5lib")
+
+    # Used to contain the body where the stock info is kept
+    stockInfoBody = soup.find("table", {"class" : "W(100%)"}).findAll("tr")
+    return float(stockInfoBody[0].findAll("td")[1].text)
+
 # Function used to gather main information
 def stockInformation(url, url1, url2):
     # Requests is used to get the HTML page that we need to parse over
