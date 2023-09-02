@@ -159,7 +159,11 @@ def PERatio(stockName):
 
     # Used to contain the body where the info is kept
     stockInfoBody = soup.find("table", {"class" : "W(100%) M(0) Bdcl(c)"}).findAll("tr")
-    return stockInfoBody[2].findAll("td")[1].text
+    # Try - Except is used in case we have a N/A for the PE Ratio
+    try:
+        return float(stockInfoBody[2].findAll("td")[1].text)
+    except:
+        return stockInfoBody[2].findAll("td")[1].text
 
 # Function used to gather main information
 def stockInformation(url, url1, url2):
