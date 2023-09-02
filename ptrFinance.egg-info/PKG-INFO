@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.1.6
+Version: 0.1.7
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -23,6 +23,9 @@ The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping
 
 Change Log
 ==========
+Version "0.1.7" (9/2/2023)
+EPS and PERatio functions
+
 Version "0.1.6" (9/1/2023)
 Close, Previous Close, Open, Low, High, and Volume daily values functions
 
