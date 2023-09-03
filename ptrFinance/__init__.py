@@ -244,6 +244,32 @@ def stockYearlyNumbers(stockName):
 
     return returnDictionary
 
+# Gather Quarterly Estimates - O(n)
+    # Returns: High, Low, Average
+def stockQuarterlyEstimates(stockName):
+    session = HTMLSession()
+    requests = session.get("https://www.marketwatch.com/investing/stock/{stockName}/analystestimates?mod=mw_quote_tab".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(requests, "html5lib")
+
+    returnDictionary = {}
+
+    rows = [x.findAll("th") for x in soup.find("div", {"class", "tab__pane j-tabPane"}).findAll("tr")]
+
+    for x in rows:
+        # Try - Except used to change between the float and string values
+        try:
+            # Append the values for the specific columns
+            returnDictionary[toAdd[0]].append([float(y.text) for y in x if y.text != ""][0])
+            returnDictionary[toAdd[1]].append([float(y.text) for y in x if y.text != ""][1])
+        except:
+            toAdd = [y.text for y in x if y.text != ""]
+            # Create the dictionary arrays used to contain the two columns
+            returnDictionary[toAdd[0]] = []
+            returnDictionary[toAdd[1]] = []
+
+    return returnDictionary
+
 # Function used to gather historic details of a company
 def stockInformationHistoric(url):
     session = HTMLSession()
