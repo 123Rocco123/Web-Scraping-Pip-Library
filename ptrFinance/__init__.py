@@ -225,6 +225,25 @@ def stockInformation(url, url1, url2):
             # So as to make sure that the values aren't locked in on the moment, but rather a general trend over the day
     return {"Open" : openPrice, "High" : high, "Low" : low, "Stock Price (Close)" : stockPrice, "Stock Change" : stockChange, "Float Stock Change" : floatStockChange, "1 Year Val (Expected)" : investorConfidence, "Volume" : volume, "Month" : datetime.now().month, "Day" : datetime.now().day, "Year" : datetime.now().year, "EPS" : eps}
 
+# Functions used to gather stock information from MarketWatch
+
+# Gather Yearly Earnings Estimates - O(n)
+    # Returns: High, Low, Average
+def stockYearlyNumbers(stockName):
+    session = HTMLSession()
+    requests = session.get("https://www.marketwatch.com/investing/stock/{stockName}/analystestimates?mod=mw_quote_tab".format(stockName = stockName)).text
+
+    soup = BeautifulSoup(requests, "html5lib")
+
+    returnDictionary = {}
+
+    dataRow = [x.text for x in soup.find("div", {"class", "element element--table yearly"}).find("tbody").findAll("th")]
+    for x in [x.text for x in soup.find("div", {"class", "element element--table yearly"}).find("thead").findAll("th") if x.text != ""]:
+        index = [x.text for x in soup.find("div", {"class", "element element--table yearly"}).find("thead").findAll("th") if x.text != ""].index(x)
+        returnDictionary[x] = [dataRow[index], dataRow[4 + index], dataRow[8 + index]]
+
+    return returnDictionary
+
 # Function used to gather historic details of a company
 def stockInformationHistoric(url):
     session = HTMLSession()
