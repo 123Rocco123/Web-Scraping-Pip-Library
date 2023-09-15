@@ -600,31 +600,32 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
     options.headless = True
     # Used to contain the web scraping driver
     driver = webdriver.Chrome(options = options)
-    # Try-Except used to account for the different formatting by Google
-    try:
-        # Search the stock on the internet
-        driver.get("https://www.google.com/search?q=what+market+does+{stockName}+trade+on+us".format(stockName = stockName))
-        # Give the website time to load
-        time.sleep(1 + increaseLoadTimeSeconds)
-        # Contains the market index for the stock
-        marketIndex = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[0]
-        stock = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[1].replace(" ", '')
-        # Close the driver
-        driver.close()
 
-        return marketIndex, stock
-    except:
-        # Search the stock on the internet
-        driver.get("https://www.google.com/search?q={stockName}+stock".format(stockName = stockName))
-        # Give the website time to load
-        time.sleep(1 + increaseLoadTimeSeconds)
-        # Contains the market index for the stock
-        marketIndex = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[0]
-        stock = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[1].replace(" ", '')
-        # Close the driver
-        driver.close()
+    # Search the stock on the internet
+    driver.get("https://finance.yahoo.com/")
+    # Give the website time to load
+    time.sleep(1 + increaseLoadTimeSeconds)
+    # Press the reject cookies button
+    driver.find_element(By.CSS_SELECTOR, "[class*='btn secondary reject-all']").click()
+    time.sleep(1)
+    # Find the search bar in the website
+    driver.find_element(By.CSS_SELECTOR, "[id*='yfin-usr-qry']").send_keys(stockName)
+    # Press the search button
+    driver.find_element(By.CSS_SELECTOR, "[class*='Bgc($c-fuji-blue-1-b) Bd(n) Bdrsbend(2px) Bdrstend(2px) D(b) H(100%) M(0) P(0) rapid-noclick-resp W(100%) Bgc($actionBlueHover):h submit-btn finsrch-btn']").click()
+    time.sleep(2)
+    # Find the Stock Name
+    stockInformation = driver.find_element(By.CSS_SELECTOR, "[class*='D(ib) Mt(-5px) Maw(38%)--tab768 Maw(38%) Mend(10px) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)']")
 
-        return marketIndex, stock
+    stock = stockInformation.find_element(By.CSS_SELECTOR, "[class*='D(ib) ']").text
+    stock = stock[stock.index("(") + 1:].replace(")", "")
+
+    marketIndex = stockInformation.find_element(By.CSS_SELECTOR, "[class*='C($tertiaryColor) Fz(12px)']").text
+    marketIndex = marketIndex[:marketIndex.index("-")].replace(" ", "")
+
+    # Close the driver
+    driver.close()
+
+    return marketIndex, stock
 
 # Function used to gather all the major shareholders of a stock
 def gatherShareholders(stockName, increaseLoadTimeSeconds = 0):
