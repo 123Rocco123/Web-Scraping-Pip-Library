@@ -626,6 +626,46 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
 
         return marketIndex, stock
 
+# Function used to gather all the major shareholders of a stock
+def gatherShareholders(stockName, increaseLoadTimeSeconds = 0):
+    marketIndex, stockFormal = findStocksIndexMarket(stockName)
+
+    # Used to run the chrome driver without opening the browser
+    options = Options()
+    # Used to run the browser without opening it
+    options.headless = True
+    # Used to contain the web scraping driver
+    driver = webdriver.Chrome(options = options)
+
+    driver.get("https://www.marketbeat.com/stocks/{marketIndex}/{stockName}/institutional-ownership/".format(marketIndex = marketIndex, stockName = stockFormal))
+    # Give the website time to load
+    time.sleep(1 + increaseLoadTimeSeconds)
+    # Click consent to cookies button
+    driver.find_element(By.CSS_SELECTOR, "[class*='fc-button fc-cta-consent fc-primary-button']").click()
+
+    formattedOwners = []
+
+    # Iterate over the owners gathered
+    for x in driver.find_elements(By.TAG_NAME, "tr"):
+        # Contains the row with the information on the shareholder
+        valueToAppend = [data.text for data in x.find_elements(By.TAG_NAME, "td") if data.text != ""]
+
+        if valueToAppend != []:
+            formattedOwners.append(valueToAppend)
+
+    # Convert the 2D array to pandas dataframe
+    formattedOwners = pd.DataFrame(formattedOwners, columns = ["Reporting Date",
+                                                               "Major Shareholder Name",
+                                                               "Shares Held",
+                                                               "Market Value",
+                                                               "% of Portfolio",
+                                                               "Quarterly Change in Shares",
+                                                               "Ownership in Company"])
+
+    return formattedOwners
+
+# Volatility Functions
+
 # Function used to return the percentage chance that a company may be going bankrupt
 def bankrupt(stockName):
     # Requests is used to get the HTML page that we need to parse over
