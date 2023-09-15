@@ -13,6 +13,11 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from csv import writer
 
+# Used for reading websites
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+
 # Class Variable
 previousVol = 0
 
