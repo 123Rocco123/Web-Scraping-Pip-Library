@@ -662,7 +662,15 @@ def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
         valueToAppend = [data.text for data in x.find_elements(By.TAG_NAME, "td") if data.text != ""]
 
         if valueToAppend != []:
-            formattedOwners.append(valueToAppend)
+            try:
+                date_format = '%m/%d/%Y'
+
+                # Convert the string to a datetime object
+                date_object = datetime.strptime(valueToAppend[0], date_format)
+
+                formattedOwners.append(valueToAppend)
+            except ValueError:
+                continue
 
     # Convert the 2D array to pandas dataframe
     formattedOwners = pd.DataFrame(formattedOwners, columns = ["Reporting Date",
