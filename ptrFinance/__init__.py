@@ -609,7 +609,6 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
     time.sleep(1 + increaseLoadTimeSeconds)
     # Press the reject cookies button
     driver.find_element(By.CSS_SELECTOR, "[class*='btn secondary reject-all']").click()
-    time.sleep(1)
     # Find the search bar in the website
     driver.find_element(By.CSS_SELECTOR, "[id*='yfin-usr-qry']").send_keys(stockName)
     time.sleep(.25)
