@@ -612,9 +612,10 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
     time.sleep(1)
     # Find the search bar in the website
     driver.find_element(By.CSS_SELECTOR, "[id*='yfin-usr-qry']").send_keys(stockName)
+    time.sleep(.25)
     # Press the search button
-    driver.find_element(By.CSS_SELECTOR, "[class*='Bgc($c-fuji-blue-1-b) Bd(n) Bdrsbend(2px) Bdrstend(2px) D(b) H(100%) M(0) P(0) rapid-noclick-resp W(100%) Bgc($actionBlueHover):h submit-btn finsrch-btn']").click()
-    time.sleep(2)
+    driver.find_element(By.CSS_SELECTOR, "[id*='header-desktop-search-button']").click()
+    time.sleep(1)
     # Find the Stock Name
     stockInformation = driver.find_element(By.CSS_SELECTOR, "[class*='D(ib) Mt(-5px) Maw(38%)--tab768 Maw(38%) Mend(10px) Ov(h) smartphone_Maw(85%) smartphone_Mend(0px)']")
 
