@@ -1,6 +1,9 @@
 Change Log
 ==========
-Version "0.1.8" (9/3/2023)
+Version "0.1.10" (9/15/2023)
+gatherShareholders function
+
+Version "0.1.9" (9/3/2023)
 stockQuarterlyEstimates, stockQuarterlyActuals, and stockYearlyNumbers functions
 
 Version "0.1.8" (9/2/2023)
