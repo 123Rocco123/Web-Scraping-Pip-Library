@@ -1,5 +1,11 @@
 Change Log
 ==========
+Version "0.1.12" (9/15/2023)
+findStocksIndexMarket function algorithm change
+
+Version "0.1.11" (9/15/2023)
+Bug Fix
+
 Version "0.1.10" (9/15/2023)
 gatherShareholders function
 
