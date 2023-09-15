@@ -20,5 +20,5 @@ setup(
   classifiers=classifiers,
   keywords=["Web Scraping", "Finance"],
   packages=find_packages(),
-  install_requires=['bs4', "requests_html", "requests", "pandas", "numpy"]
+  install_requires=['bs4', "requests_html", "requests", "pandas", "numpy", "selenium"]
 )
