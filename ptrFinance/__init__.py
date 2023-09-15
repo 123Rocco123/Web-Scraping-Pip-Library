@@ -620,6 +620,11 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
 
     stock = stockInformation.find_element(By.CSS_SELECTOR, "[class*='D(ib) ']").text
     stock = stock[stock.index("(") + 1:].replace(")", "")
+    # Incase we have a stock referenced as VOW3.DE
+    try:
+        stock = stock[:stock.index(".")]
+    except:
+        pass
 
     marketIndex = stockInformation.find_element(By.CSS_SELECTOR, "[class*='C($tertiaryColor) Fz(12px)']").text
     marketIndex = marketIndex[:marketIndex.index("-")].replace(" ", "")
