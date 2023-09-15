@@ -589,6 +589,43 @@ def returnAnalystRatings(stockName, marketName):
         print("Couldn't find the stock, check spelling")
         return -1
 
+# Company Owners Functions
+
+# Auxiliary function for the gatherShareholders function
+    # "increaseLoadTimeSeconds" variable is used only if the user thinks that 1 second is too short
+def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
+    # Used to run the chrome driver without opening the browser
+    options = Options()
+    # Used to run the browser without opening it
+    options.headless = True
+    # Used to contain the web scraping driver
+    driver = webdriver.Chrome(options = options)
+    # Try-Except used to account for the different formatting by Google
+    try:
+        # Search the stock on the internet
+        driver.get("https://www.google.com/search?q=what+market+does+{stockName}+trade+on+us".format(stockName = stockName))
+        # Give the website time to load
+        time.sleep(1 + increaseLoadTimeSeconds)
+        # Contains the market index for the stock
+        marketIndex = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[0]
+        stock = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[1].replace(" ", '')
+        # Close the driver
+        driver.close()
+
+        return marketIndex, stock
+    except:
+        # Search the stock on the internet
+        driver.get("https://www.google.com/search?q={stockName}+stock".format(stockName = stockName))
+        # Give the website time to load
+        time.sleep(1 + increaseLoadTimeSeconds)
+        # Contains the market index for the stock
+        marketIndex = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[0]
+        stock = driver.find_element(By.CSS_SELECTOR, "[class*='iAIpCb PZPZlf']").text.split(":")[1].replace(" ", '')
+        # Close the driver
+        driver.close()
+
+        return marketIndex, stock
+
 # Function used to return the percentage chance that a company may be going bankrupt
 def bankrupt(stockName):
     # Requests is used to get the HTML page that we need to parse over
