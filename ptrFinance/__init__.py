@@ -681,6 +681,8 @@ def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
                                                                "Quarterly Change in Shares",
                                                                "Ownership in Company"])
 
+    driver.close()
+
     return formattedOwners
 
 # Volatility Functions
