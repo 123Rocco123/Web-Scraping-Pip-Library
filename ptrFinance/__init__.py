@@ -8,6 +8,8 @@ import webbrowser
 import pandas as pd
 import numpy as np
 
+from datetime import datetime
+
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 from datetime import datetime
