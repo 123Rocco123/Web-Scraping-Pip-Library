@@ -3,3 +3,4 @@ requests_html
 requests
 pandas
 numpy
+selenium
