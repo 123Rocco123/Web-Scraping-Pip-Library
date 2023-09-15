@@ -651,6 +651,9 @@ def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
     # Click consent to cookies button
     driver.find_element(By.CSS_SELECTOR, "[class*='fc-button fc-cta-consent fc-primary-button']").click()
 
+    if "institutional-ownership" not in driver.current_url:
+        driver.get(driver.current_url + "institutional-ownership/")
+
     formattedOwners = []
 
     # Iterate over the owners gathered
