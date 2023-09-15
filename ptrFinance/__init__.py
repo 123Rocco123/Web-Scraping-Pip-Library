@@ -645,7 +645,7 @@ def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
     # Used to contain the web scraping driver
     driver = webdriver.Chrome(options = options)
 
-    driver.get("https://www.marketbeat.com/stocks/{marketIndex}/{stockName}/institutional-ownership/".format(marketIndex = marketIndex, stockName = stockFormal))
+    driver.get("https://www.marketbeat.com/stocks/{marketIndex}/{stock}/institutional-ownership/".format(marketIndex = marketIndex, stock = stockFormal))
     # Give the website time to load
     time.sleep(1 + increaseLoadTimeSeconds)
     # Click consent to cookies button
