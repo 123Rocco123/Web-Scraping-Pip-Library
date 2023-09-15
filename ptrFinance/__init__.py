@@ -685,6 +685,14 @@ def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
 
     return formattedOwners
 
+# The function is used to call the gatherShareholdersFunc function
+    # Because of Selenium, sometimes we will get an error where the driver can't find the element, and therefore we have to re-load the website
+def gatherShareholders(stockName, increaseLoadTimeSeconds = 0):
+    try:
+        gatherShareholdersFunc(stockName, increaseLoadTimeSeconds)
+    except:
+        gatherShareholdersFunc(stockName, 0.25)
+
 # Volatility Functions
 
 # Function used to return the percentage chance that a company may be going bankrupt
