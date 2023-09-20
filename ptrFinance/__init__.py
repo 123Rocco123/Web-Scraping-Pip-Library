@@ -635,7 +635,7 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
     return marketIndex, stock
 
 # Function used to gather all the major shareholders of a stock
-def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
+def gatherInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds):
     marketIndex, stockFormal = findStocksIndexMarket(stockName)
 
     # Used to run the chrome driver without opening the browser
@@ -685,13 +685,14 @@ def gatherShareholdersFunc(stockName, increaseLoadTimeSeconds):
 
     return formattedOwners
 
-# The function is used to call the gatherShareholdersFunc function
+# The function is used to call the gatherInstitutionalOwnersFunc function
     # Because of Selenium, sometimes we will get an error where the driver can't find the element, and therefore we have to re-load the website
-def gatherShareholders(stockName, increaseLoadTimeSeconds = 0):
+def gatherInstitutionalOwners(stockName, increaseLoadTimeSeconds = 0):
     try:
-        gatherShareholdersFunc(stockName, increaseLoadTimeSeconds)
+        return gatherInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds)
     except:
-        gatherShareholdersFunc(stockName, 0.25)
+        return gatherInstitutionalOwnersFunc(stockName, 0.25)
+
 
 # Volatility Functions
 
