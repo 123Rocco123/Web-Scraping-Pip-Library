@@ -693,6 +693,34 @@ def gatherInstitutionalOwners(stockName, increaseLoadTimeSeconds = 0):
     except:
         return gatherInstitutionalOwnersFunc(stockName, 0.25)
 
+# Inside Trading Functions
+
+# Function used to scrape Yahoo Finance for the past 2 years of insider trading information
+def gatherInsiderTrades(stockName):
+    # Incase Yahoo Finance doesn't have the information featured on their website
+    try:
+        # Requests is used to get the HTML page that we need to parse over
+        session = HTMLSession()
+        # Link used to contain the google finance page of the chosen stock
+        page = session.get("https://finance.yahoo.com/quote/{stockName}/insider-transactions?p={stockName}".format(stockName = stockName)).text
+        soup = BeautifulSoup(page, "html5lib")
+
+        # Contains the 2D array with table rows and its data
+        tableRowsAndData = [[y.text for y in x.findAll("td")] for x in soup.find("table", {"class", "W(100%) BdB Bdc($seperatorColor)"}).find("tbody").findAll("tr")]
+
+        # Convert the 2D array to pandas dataframe
+        formattedTransactions = pd.DataFrame(tableRowsAndData, columns = ["Insider",
+                                                                          "Transaction",
+                                                                          "Type",
+                                                                          "Value",
+                                                                          "Date",
+                                                                          "Shares"])
+
+        return formattedTransactions
+
+    # The except statement is used to scrape the simplywall website instead
+    except AttributeError:
+        return "Data Unavailable"
 
 # Volatility Functions
 
