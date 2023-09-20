@@ -1,5 +1,13 @@
 Change Log
 ==========
+Version "0.1.15" (9/20/2023)
+gatherShareholders changed to gatherInstitutionalOwners
+
+gatherInsiderTrades function added
+
+Version "0.1.14" (9/15/2023)
+gatherShareholders bug fix
+
 Version "0.1.13" (9/15/2023)
 gatherShareholders changes and findStocksIndexMarket bug fixes and algorithm changes.
 
