@@ -737,6 +737,29 @@ def gatherTopMFH(stockName):
 
 # Inside Trading Functions
 
+# Function used to gather the insider purchases over the last 6 months
+def insiderPurchasesSixMonths(stockName):
+    # Incase Yahoo Finance doesn't have the information featured on their website
+    try:
+        # Requests is used to get the HTML page that we need to parse over
+        session = HTMLSession()
+        # Link used to contain the google finance page of the chosen stock
+        page = session.get("https://finance.yahoo.com/quote/{stockName}/insider-transactions?p={stockName}".format(stockName = stockName)).text
+        soup = BeautifulSoup(page, "html5lib")
+
+        # Contains the 2D array with table rows and its data
+        tableRowsAndData = [[y.text for y in x.findAll("td")] for x in soup.find("table", {"class", "W(100%) M(0)"}).find("tbody").findAll("tr")]
+
+        # Convert the 2D array to pandas dataframe
+        formattedTransactions = pd.DataFrame(tableRowsAndData, columns = ["Insider Purchases Last 6 Months",
+                                                                          "Shares",
+                                                                          "Trans"])
+
+        return formattedTransactions
+
+    except AttributeError:
+        return "Data Unavailable"
+
 # Function used to scrape Yahoo Finance for the past 2 years of insider trading information
 def gatherInsiderTrades(stockName):
     # Incase Yahoo Finance doesn't have the information featured on their website
