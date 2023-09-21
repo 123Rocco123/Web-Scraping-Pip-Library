@@ -635,7 +635,7 @@ def findStocksIndexMarket(stockName, increaseLoadTimeSeconds = 0):
     return marketIndex, stock
 
 # Function used to gather all the major shareholders of a stock
-def gatherInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds):
+def gatherRecentInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds = 0):
     marketIndex, stockFormal = findStocksIndexMarket(stockName)
 
     # Used to run the chrome driver without opening the browser
