@@ -685,13 +685,13 @@ def gatherRecentInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds = 0):
 
     return formattedOwners
 
-# The function is used to call the gatherInstitutionalOwnersFunc function
+# The function is used to call the gatherRecentInstitutionalOwnersFunc function
     # Because of Selenium, sometimes we will get an error where the driver can't find the element, and therefore we have to re-load the website
-def gatherInstitutionalOwners(stockName, increaseLoadTimeSeconds = 0):
+def gatherRecentInstitutionalOwners(stockName, increaseLoadTimeSeconds = 0):
     try:
-        return gatherInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds)
+        return gatherRecentInstitutionalOwnersFunc(stockName, increaseLoadTimeSeconds)
     except:
-        return gatherInstitutionalOwnersFunc(stockName, 0.25)
+        return gatherRecentInstitutionalOwnersFunc(stockName, 0.25)
 
 # Inside Trading Functions
 
