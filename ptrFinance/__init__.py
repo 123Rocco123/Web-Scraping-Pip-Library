@@ -693,6 +693,27 @@ def gatherRecentInstitutionalOwners(stockName, increaseLoadTimeSeconds = 0):
     except:
         return gatherRecentInstitutionalOwnersFunc(stockName, 0.25)
 
+# Function used to gather the largest institutional holders of a company
+def largestInstitutionalOwners(stockName):
+    # Requests is used to get the HTML page that we need to parse over
+    session = HTMLSession()
+    # Link used to contain the google finance page of the chosen stock
+    page = session.get("https://finance.yahoo.com/quote/{stockName}/holders?p={stockName}".format(stockName = stockName)).text
+    soup = BeautifulSoup(page, "html5lib")
+
+    topInstitutionalHolders = soup.find("div", {"class", "Mt(25px) Ovx(a) W(100%)"}).find("tbody")
+    # Contains the Top institutional Holders in a 2D array format
+    topInstitutionalHolders = ([[y.text for y in x.findAll("td")] for x in topInstitutionalHolders.findAll("tr")])
+
+    # Convert the 2D array to pandas dataframe
+    formattedOwners = pd.DataFrame(topInstitutionalHolders, columns = ["Holder",
+                                                                       "Shares",
+                                                                       "Date Reported",
+                                                                       "% Out",
+                                                                       "Value"])
+
+    return formattedOwners
+
 # Inside Trading Functions
 
 # Function used to scrape Yahoo Finance for the past 2 years of insider trading information
