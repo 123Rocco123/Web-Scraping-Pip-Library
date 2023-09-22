@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: ptrFinance
-Version: 0.1.15
+Version: 0.1.18
 Summary: Financial Web Scraping Library
 Home-page: 
 Author: Rocco Pio Maria Petruccio
@@ -23,6 +23,21 @@ The GitHub repository is located at: https://github.com/123Rocco123/Web-Scraping
 
 Change Log
 ==========
+Version "0.1.18" (9/22/2023)
+Bug Fixes
+
+Version "0.1.17" (9/21/2023)
+gatherInsiderTrades new default parameter, and allows for names to be recorded or not of the insiders
+
+Version "0.1.16" (9/21/2023)
+gatherInstitutionalOwners changed to gatherRecentInstitutionalOwners
+
+insiderPurchasesSixMonths function
+
+largestInstitutionalOwners function
+
+gatherTopMFH function
+
 Version "0.1.15" (9/20/2023)
 gatherShareholders changed to gatherInstitutionalOwners
 
