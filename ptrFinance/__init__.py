@@ -118,7 +118,12 @@ def dayLowValue(stockName):
 
     # Used to contain the body where the info is kept
     stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")
-    return float(stockInfoBody[1].findAll("td")[3].text)
+
+    # In case we have a weird Yahoo Finance formatting
+    try:
+        return float(stockInfoBody[1].findAll("td")[3].text)
+    except AttributeError:
+        return float(stockInfoBody[0].findAll("td")[3].text)
 
 # Return the high price for the day
 def dayHighValue(stockName):
@@ -129,7 +134,7 @@ def dayHighValue(stockName):
     soup = BeautifulSoup(page, "html5lib")
 
     # Used to contain the body where the info is kept
-    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")
+    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).find("tbody").findAll("tr")
     return float(stockInfoBody[1].findAll("td")[2].text)
 
 # Return the volume of trades for the day
@@ -141,7 +146,7 @@ def dayVolume(stockName):
     soup = BeautifulSoup(page, "html5lib")
 
     # Used to contain the body where the info is kept
-    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")
+    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).find("tbody").findAll("tr")
     return int(stockInfoBody[1].findAll("td")[6].text.replace(",", ""))
 
 # Return the EPS value for the stock
