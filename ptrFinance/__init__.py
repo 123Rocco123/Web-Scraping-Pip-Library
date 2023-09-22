@@ -775,8 +775,14 @@ def gatherInsiderTrades(stockName, names = False):
         page = session.get("https://finance.yahoo.com/quote/{stockName}/insider-transactions?p={stockName}".format(stockName = stockName)).text
         soup = BeautifulSoup(page, "html5lib")
 
-        # Contains the 2D array with table rows and its data
-        tableRowsAndData = [[y.text for y in x.findAll("td")] for x in soup.find("table", {"class", "W(100%) BdB Bdc($seperatorColor)"}).find("tbody").findAll("tr")]
+        # Condition used in case the user wants to record the names of the insiders or just their ranks
+            # Set to just their ranks by default
+        if names == False:
+            # Contains the 2D array with table rows and its data
+            tableRowsAndData = [[y.text.replace(x.find("a", {"class" : "Tt(u)"}).text, "") for y in x.findAll("td")] for x in soup.find("table", {"class", "W(100%) BdB Bdc($seperatorColor)"}).find("tbody").findAll("tr")]
+        else:
+            # Contains the 2D array with table rows and its data
+            tableRowsAndData = [[y.text.replace(x.find("a", {"class" : "Tt(u)"}).text, x.find("a", {"class" : "Tt(u)"}).text + " ") for y in x.findAll("td")] for x in soup.find("table", {"class", "W(100%) BdB Bdc($seperatorColor)"}).find("tbody").findAll("tr")]
 
         # Convert the 2D array to pandas dataframe
         formattedTransactions = pd.DataFrame(tableRowsAndData, columns = ["Insider",
