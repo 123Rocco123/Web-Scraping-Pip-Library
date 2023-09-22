@@ -766,7 +766,7 @@ def insiderPurchasesSixMonths(stockName):
         return "Data Unavailable"
 
 # Function used to scrape Yahoo Finance for the past 2 years of insider trading information
-def gatherInsiderTrades(stockName):
+def gatherInsiderTrades(stockName, names = False):
     # Incase Yahoo Finance doesn't have the information featured on their website
     try:
         # Requests is used to get the HTML page that we need to parse over
