@@ -905,3 +905,14 @@ def FTFindStock(stockName):
     # Return the link to the Financial Times page
     return driver, link
 
+# Function used to gather if a company is being shorted or not (Financial Times)
+def findShortSellingActivity(stockName):
+    driver, link = FTFindStock(stockName)
+    #
+    driver.get(link)
+    #
+    time.sleep(2)
+    #
+    driver.quit()
+    # Returns the activity amount of short selling for the stock
+    return driver.find_element(By.CSS_SELECTOR, "[class*='mod-ui-rating-bar__section mod-ui-rating-bar__section--active']").text
