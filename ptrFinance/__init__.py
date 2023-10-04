@@ -912,7 +912,9 @@ def findShortSellingActivity(stockName):
     driver.get(link)
     #
     time.sleep(2)
+    # Returns the activity amount of short selling for the stock
+    shortSelling =  driver.find_element(By.CSS_SELECTOR, "[class*='mod-ui-rating-bar__section mod-ui-rating-bar__section--active']").text
     #
     driver.quit()
-    # Returns the activity amount of short selling for the stock
-    return driver.find_element(By.CSS_SELECTOR, "[class*='mod-ui-rating-bar__section mod-ui-rating-bar__section--active']").text
+
+    return shortSelling
