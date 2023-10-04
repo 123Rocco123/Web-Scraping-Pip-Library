@@ -875,3 +875,33 @@ def returnVolatilityGivenTime(stockName, numberOfDays):
 
     # Returns the volatility of the stock
     return np.sqrt(varianceOfSquaredDiff)
+
+# Financial Times Functions
+
+# Function used to find the stock on the Financial Times website
+def FTFindStock(stockName):
+    # Used to run the chrome driver without opening the browser
+    options = Options()
+    options.headless = True
+    # Used to contain the web scraping driver
+    driver = webdriver.Chrome(options = options)
+
+    # Search the website and give it time to load
+    driver.get("https://www.google.com/search?q=financial+times+{stockName}".format(stockName = stockName))
+
+    time.sleep(1.5)
+
+    # Reject Google Cookies
+    driver.find_element(By.CSS_SELECTOR, "[class*='QS5gu sy4vM']").click()
+
+    links = driver.find_elements(By.CSS_SELECTOR, "[class*='yuRUbf']")
+    link = None
+
+    for x in links:
+        if "summary" in x.find_element(By.TAG_NAME, "h3").text:
+            link = x.find_element(By.TAG_NAME, "a").get_attribute("href")
+            break
+
+    # Return the link to the Financial Times page
+    return driver, link
+
