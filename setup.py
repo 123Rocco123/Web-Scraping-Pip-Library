@@ -10,7 +10,7 @@ classifiers = [
 
 setup(
   name='ptrFinance',
-  version='0.1.20',
+  version='0.1.22',
   description='Financial Web Scraping Library',
   long_description= open('README.txt').read() + '\n\n' + open('CHANGELOG.txt').read(),
   url='',
