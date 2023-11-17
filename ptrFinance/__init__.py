@@ -82,7 +82,11 @@ def closeValue(stockName):
 
     soup = BeautifulSoup(page, "html5lib")
 
-    return float(soup.find("fin-streamer", {"class" : "Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text)
+    try:
+        return float(soup.find("fin-streamer", {"class" : "Fw(b) Fz(36px) Mb(-4px) D(ib)"}).text)
+    except ValueError:
+        if stockInfoBody[1].findAll("td")[3].text == "-":
+            return None
 
 # Return the previous closing price
 def previousClose(stockName):
@@ -94,7 +98,12 @@ def previousClose(stockName):
 
     # Used to contain the body where the stock info is kept
     stockInfoBody = soup.find("table", {"class" : "W(100%)"}).findAll("tr")
-    return float(stockInfoBody[0].findAll("td")[1].text)
+
+    try:
+        return float(stockInfoBody[0].findAll("td")[1].text)
+    except ValueError:
+        if stockInfoBody[1].findAll("td")[3].text == "-":
+            return None
 
 # Return the open price
 def openValue(stockName):
@@ -106,7 +115,12 @@ def openValue(stockName):
 
     # Used to contain the body where the stock info is kept
     stockInfoBody = soup.find("table", {"class" : "W(100%)"}).findAll("tr")
-    return float(stockInfoBody[1].findAll("td")[1].text)
+
+    try:
+        return float(stockInfoBody[1].findAll("td")[1].text)
+    except ValueError:
+        if stockInfoBody[1].findAll("td")[3].text == "-":
+            return None
 
 # Return the low price for the day
 def dayLowValue(stockName):
@@ -117,13 +131,20 @@ def dayLowValue(stockName):
     soup = BeautifulSoup(page, "html5lib")
 
     # Used to contain the body where the info is kept
-    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).findAll("tr")
+    stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).find("tbody").findAll("tr")
 
     # In case we have a weird Yahoo Finance formatting
     try:
-        return float(stockInfoBody[1].findAll("td")[3].text)
+        valueToReturn = float(stockInfoBody[0].findAll("td")[3].text)
+
+        return valueToReturn
     except AttributeError:
         return float(stockInfoBody[0].findAll("td")[3].text)
+    except ValueError:
+        if stockInfoBody[1].findAll("td")[3].text == "-":
+            return None
+
+print(dayLowValue("AMD"))
 
 # Return the high price for the day
 def dayHighValue(stockName):
@@ -135,7 +156,16 @@ def dayHighValue(stockName):
 
     # Used to contain the body where the info is kept
     stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).find("tbody").findAll("tr")
-    return float(stockInfoBody[1].findAll("td")[2].text)
+
+    try:
+        valueToReturn = float(stockInfoBody[0].findAll("td")[2].text)
+
+        return valueToReturn
+    except ValueError:
+        if stockInfoBody[1].findAll("td")[3].text == "-":
+            return None
+        else:
+            return float(stockInfoBody[1].findAll("td")[2].text)
 
 # Return the volume of trades for the day
 def dayVolume(stockName):
@@ -147,7 +177,16 @@ def dayVolume(stockName):
 
     # Used to contain the body where the info is kept
     stockInfoBody = soup.find("table", {"class" : "W(100%) M(0)"}).find("tbody").findAll("tr")
-    return int(stockInfoBody[1].findAll("td")[6].text.replace(",", ""))
+
+    try:
+        valueToReturn = int(stockInfoBody[0].findAll("td")[6].text.replace(",", ""))
+
+        return valueToReturn
+    except ValueError:
+        if stockInfoBody[1].findAll("td")[3].text == "-":
+            return None
+        else:
+            return int(stockInfoBody[1].findAll("td")[6].text.replace(",", ""))
 
 # Return the EPS value for the stock
 def stockEPSValue(stockName):
