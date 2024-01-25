@@ -919,11 +919,8 @@ def returnVolatilityGivenTime(stockName, numberOfDays):
 
 # Function used to find the stock on the Financial Times website
 def FTFindStock(stockName):
-    # Used to run the chrome driver without opening the browser
-    options = Options()
-    options.headless = True
     # Used to contain the web scraping driver
-    driver = webdriver.Chrome(options = options)
+    driver = webdriver.Chrome()
 
     # Search the website and give it time to load
     driver.get("https://www.google.com/search?q=financial+times+{stockName}".format(stockName = stockName))
@@ -949,11 +946,30 @@ def findShortSellingActivity(stockName):
     driver, link = FTFindStock(stockName)
     #
     driver.get(link)
-    #
+    # Give the website time to load
     time.sleep(2)
+
+    # Try-Except is used in case we have the cookies accept iframe
+    try:
+        # Switch over to the HTML session containing the accept cookies button
+        iframe = driver.find_element(By.CSS_SELECTOR, "[title*='SP Consent Message']")
+        # Switch to the iframe
+        driver.switch_to.frame(iframe)
+
+        driver.find_element(By.CSS_SELECTOR, "[title*='Accept Cookies']").click()
+
+        # Switch back to the default content
+        driver.switch_to.default_content()
+
+        # Give the website time to load
+        time.sleep(2)
+
+    except:
+        pass
+
     # Returns the activity amount of short selling for the stock
-    shortSelling =  driver.find_element(By.CSS_SELECTOR, "[class*='mod-ui-rating-bar__section mod-ui-rating-bar__section--active']").text
-    #
+    shortSelling = driver.find_element(By.CSS_SELECTOR, "[class*='mod-ui-rating-bar__section mod-ui-rating-bar__section--active']").text
+    # Close the driver
     driver.quit()
 
     return shortSelling
