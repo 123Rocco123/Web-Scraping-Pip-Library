@@ -144,8 +144,6 @@ def dayLowValue(stockName):
         if stockInfoBody[1].findAll("td")[3].text == "-":
             return None
 
-print(dayLowValue("AMD"))
-
 # Return the high price for the day
 def dayHighValue(stockName):
     # Create the session for webscraping
